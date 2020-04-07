@@ -1,0 +1,52 @@
+#!/usr/bin/env bash 
+
+# is there an argument?
+
+if [[ ! $1 ]]; then 
+  echo "Missing argument"
+  exit 1
+fi
+
+scriptname="$1"
+bindir="${HOME}/bin"
+filename="${bindir}/${scriptname}"
+
+#check if file exist
+if [[ -e $filename ]]; then
+  echo "File ${filename} already exists"
+  exit 1
+fi
+
+if type "$scriptname"; then
+  echo "There is already a command with name ${scriptname}"
+  exit 1
+fi
+
+#check for bin dir
+if [[ ! -d $bindir ]]; then
+  #i if not: create bin directory
+  if mkdir "$bindir"; then 
+    echo "created ${bindir}"
+  else 
+    echo "could not create ${bindir}."
+    exit 1
+  fi
+fi
+
+# Create a script with a single line
+echo '#!/usr/bin/env bash' > "$filename"
+# add executable permission
+chmod u+x "$filename"
+#open with editor
+if [[ $EDITOR ]]; then
+  $EDITOR "$filename"
+else
+  echo "script created, not startgin editor beacuse Editor is not set"
+fi
+
+echo "end of code reached"
+exit 0
+
+
+exec bash
+

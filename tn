@@ -1,0 +1,25 @@
+#!/usr/bin/env bash 
+
+
+# echo $(date): $* >> ~/notes.txt
+# echo Note saved $*
+
+#get the date
+date=$(date)
+
+#get the topic
+topic="$1"
+
+#filename to write to
+# filename=~/${topic}notes.txt
+filename="${HOME}/${topic}notes.txt"
+
+# here -p is for displaying a nice prompt
+read -p "you notes:" note
+
+# "$filename" allows to enter name with spaces
+echo "$date: $note" >> "$filename"
+echo "Note  '$note' saved to $filename"
+
+exec bash
+

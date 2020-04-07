@@ -1,0 +1,35 @@
+#!/usr/bin/env python3
+
+import os
+
+#gets the current workin directory
+main_path =  os.getcwd()
+
+project_name = input("enter your project name")
+
+project_path = "%s" % (project_name)
+html_path1 = "%s/src" % (project_name)
+html_path2 = "assets"
+
+# create the working dir
+try:
+    os.makedirs(html_path1)
+    os.chdir(project_path)
+    os.makedirs(html_path2)
+    os.chdir(main_path)
+except OSError:
+    print ("Creation of the directory %s failed" % project_path)
+else:
+    print ("Successfully created the directory %s" % project_path)
+
+
+# create files inside out dir
+
+os.chdir(project_path)
+f = open("index.html", "w+")
+str = '<!DOCTYPE html>\n<html lang="en">\n<head>\n\t<meta charset="UTF-8">\n\t<meta name="viewport" content="width=device-width, initial-scale=1.0">\n\t<meta http-equiv="X-UA-Compatible" content="ie=edge">\n\t<link rel="stylesheet" href="./assets/style.css">\n\t<title>Document</title>\n</head>\n<body>\n</body>\n<script src="./assets/script.js"></script>\n</html>'
+f.write(str)
+os.chdir("assets")
+f = open("style.css", "w+")
+f = open("script.js", "w+")
+

@@ -1,0 +1,73 @@
+#!/usr/bin/env bash
+
+echo "select the operation ************"
+echo "  1)update"
+echo "  2)Python3"
+echo "  3)Nodejs"
+echo "  4)Essentials"
+echo "  5)Fix Broken"
+echo "  99)Vim files"
+echo "  0)All"
+
+
+read -p "you choice:" n
+echo -n "Do you wish to continue (Yy/Nn) :"
+read choice
+if [ $choice = "Y" ] || [ $choice = "y" ]
+then
+    case $n in
+         1) parameter="update";;
+         2) parameter="python";;
+         3) parameter="nodejs";;
+         4) parameter="essentials";;
+         5) parameter="fix";;
+         99)parameter="vim";;
+         0) parameter="all";;
+         *) echo "invalid option";;
+    esac
+else
+  echo "aborted"
+fi
+
+
+packages () {
+   if [ "$1" = "update" ]
+   then
+      sudo apt-get update
+    elif [ "$1" = "python" ]
+    then
+      sudo apt-get install python3
+      sudo apt-get -y install python3-pip
+    elif [ "$1" = "nodejs" ]
+    then
+      sudo apt-get install nodejs
+      sudo apt-get install npm
+    elif [ "$1" = "essentials" ]
+    then
+      sudo apt-get install build-essential
+    elif [ "$1" = "fix" ]
+    then
+      sudo apt update --fix-missing
+      sudo apt install -f
+    elif [ "$1" = "vim" ]
+    then
+      git clone --depth=1 https://github.com/Abskpro/Vim.git ~/.vim_runtime
+      sh ~/.vim_runtime/install_awesome_vimrc.sh
+    elif [ "$1" = "all" ]
+    then
+        sudo apt-get update
+        sudo apt-get install build-essential
+        sudo apt-get install python3
+        sudo apt-get -y install python3-pip
+        sudo apt-get install nodejs
+        sudo apt-get install npm
+    else
+      echo "no operation"
+  fi
+}
+
+packages $parameter
+exit 0
+
+exec bash
+
