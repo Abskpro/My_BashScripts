@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+# this is a simple bash script to keep track of
+# projets that are in github
+#type gitit in the project dir which has git files
+
+path=$(pwd)
+echo $path
+
+
+if [[ $1 = "sw" ]]; then
+    cat ~/git/log.txt
+else
+    if [ -d ~/git ]
+    then
+        if [ -f ~/git/log.txt ]
+        then
+            echo $path >> ~/git/log.txt
+        else
+            echo > ~/git/log.txt
+            echo $path >> ~/git/log.txt
+        fi
+    else
+        mkdir ~/git
+    fi
+fi

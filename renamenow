@@ -1,0 +1,55 @@
+#!/usr/bin/env python3
+
+import os
+from os import path
+
+
+names = [
+    "RtUAMZMxQX",
+    "QYtABfznir",
+    "SWBNEBzRqz",
+    "RMxYKHccmq",
+    "EUJYzdOTpZ",
+    "QbEcXELRfX",
+    "vaXegIpsbO",
+    "EfbxmdMjdk",
+    "xfnPhIhbsk",
+    "eTPeyomhku",
+    "NxXqKMuJOK",
+    "zVjfypMAyC",
+    "QNfkZLHJmT",
+    "gKVHVidBNs",
+    "ZsPGJefrKM",
+    "yNkLJjmyEB",
+    "MgNBQPYxmS",
+    "uGQjPdmhkc",
+    "TUxBLGlaJA",
+    "KKFujyNiBq",
+    "ckzsMYVsBa",
+    "mccNfwghHe",
+    "QgGpaHbPKf",
+    "TAhONnGsOX",
+    "SezSOzWGiX",
+    "ZfvpWkUuan",
+    "QtzXpszvTj",
+    "rjnTBhJNHD",
+    "qkgaSmxsmO",
+    "lhVnRItzIM",
+    "qAcEkClwhH",
+    "kVNWppVHLp",
+    "WgUgKRTnOS",
+    "pgfDgsLNUV",
+    "pFdXLaCkdS",
+    "CDYstfZnYY",
+    "VwzqqeXZTl",
+    "WQMMZmDouW",
+    "VCyVQoZxne",
+    "XOZMzzVNzL",
+    "CcVdoGZdke",
+    "BcfFpjEpIC"
+]
+
+
+for index in range((len(names))):
+    if path.exists(names[index]):
+        os.rename(names[index], str(index+1)+".mp4")

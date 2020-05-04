@@ -1,0 +1,17 @@
+#!/usr/bin/env python3
+
+import glob, os
+from os import path
+
+bar = ["abc","def","ghi"]
+
+count = 1;
+# print(length)
+# for i in bar:
+#     if path.exists(str(bar[i])):
+#         os.rename(bar[i],str(count)+".mp4")
+
+for index in range((len(bar))):
+    if path.exists(bar[index]):
+        os.rename(bar[index], str(index+1)+".mp4")
+        # print(bar[index],index+1)
